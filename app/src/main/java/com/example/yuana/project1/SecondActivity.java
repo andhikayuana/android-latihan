@@ -42,6 +42,10 @@ public class SecondActivity extends AppCompatActivity {
             fragment = new MyInboxFragment();
         }else if(position == 2){
             fragment = new TeamViewFragment();
+        }else if(position == 3){
+            fragment = new ListFragment();
+        }else if (position == 4){
+            fragment = new GridFragment();
         }
 
         if(fragment != null) {
@@ -70,6 +74,8 @@ public class SecondActivity extends AppCompatActivity {
         mNavItems.add(new NavItem("TODO", "The list task", R.drawable.ic_my_task));
         mNavItems.add(new NavItem("Messages", "Send message", R.drawable.ic_my_inbox));
         mNavItems.add(new NavItem("Contact", "Contact Friends", R.drawable.ic_team_view));
+        mNavItems.add(new NavItem("ListView", "Try ListView", R.drawable.ic_drawer));
+        mNavItems.add(new NavItem("GridView", "Try GridView", R.drawable.ic_photo_profile));
 
         //drawer layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -126,11 +132,19 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
+    //menu di kanan
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_second, menu);
-        return true;
+//        getMenuInflater().inflate(R.menu.menu_second, menu);
+//        return true;
+        super.onCreateOptionsMenu(menu);
+
+        menu.add(Menu.NONE, R.id.menu_action1, Menu.NONE, R.string.menu_action1);
+        menu.add(Menu.NONE, R.id.menu_action2, Menu.NONE, R.string.menu_action2);
+        menu.add(Menu.NONE, R.id.menu_action3, Menu.NONE, R.string.menu_action3);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -138,12 +152,18 @@ public class SecondActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
+        int id = item.getItemId();
 //
 //        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        if (id == R.id.menu_action1) {
+            Toast.makeText(SecondActivity.this,"Ini Menu Action 1",Toast.LENGTH_SHORT).show();
+        }
+        else if (id == R.id.menu_action2){
+            Toast.makeText(SecondActivity.this,"Ini Menu Action 2",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(SecondActivity.this,"Ini Menu Action 3",Toast.LENGTH_SHORT).show();
+        }
 
         if (mDrawerToggle.onOptionsItemSelected(item)){
             return true;

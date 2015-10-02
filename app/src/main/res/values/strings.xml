@@ -23,4 +23,8 @@
 
     <string name="info"></string>
     <string name="title_activity_map_client">Client Location</string>
+
+    <string name="menu_action1">Menu Action 1</string>
+    <string name="menu_action2">Menu Action 2</string>
+    <string name="menu_action3">Menu Action 3</string>
 </resources>

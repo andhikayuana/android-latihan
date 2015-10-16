@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':android-async-http-1.4.6', ':volley', ':httpcore-4.1.3-sources', ':httpcore-4.0.1'

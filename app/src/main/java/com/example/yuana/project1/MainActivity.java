@@ -1,9 +1,8 @@
 package com.example.yuana.project1;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     //deklarasi component
@@ -67,20 +71,59 @@ public class MainActivity extends AppCompatActivity {
 
     private void login(String username, String password){
 
-        if (username.equals("andhikayuana") && password.equals("yuana")){
-            Toast.makeText(MainActivity.this,"Anda berhasil Login",Toast.LENGTH_SHORT).show();
+        RequestParams Params = new RequestParams();
 
-            //memanggil secondactivity
-            Intent second = new Intent(MainActivity.this, SecondActivity.class);
+        Params.put("username",username);
+        Params.put("password",password);
 
-            second.putExtra("data","ini dari login");
+        ParentRestClient.post("user/login", Params, new JsonHttpResponseHandler(){
 
-            //menjalankan
-            startActivity(second);
-        }
-        else{
-            Toast.makeText(MainActivity.this,"Anda Gagal Login", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+
+                String msg = null;
+
+                try {
+                    msg = response.getString("msg");
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+                if (msg.equalsIgnoreCase("success")){
+
+                    Toast.makeText(MainActivity.this,"Anda berhasil Login", Toast.LENGTH_SHORT).show();
+                    Intent second = new Intent(MainActivity.this, SecondActivity.class);
+                    second.putExtra("data","ini dari login");
+                    startActivity(second);
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(MainActivity.this, "Anda Gagal Login", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+//        if (username.equals("andhikayuana") && password.equals("yuana")){
+//            Toast.makeText(MainActivity.this,"Anda berhasil Login",Toast.LENGTH_SHORT).show();
+//
+//            //memanggil secondactivity
+//            Intent second = new Intent(MainActivity.this, SecondActivity.class);
+//
+//            second.putExtra("data","ini dari login");
+//
+//            //menjalankan
+//            startActivity(second);
+//        }
+//        else{
+//            Toast.makeText(MainActivity.this,"Anda Gagal Login", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 }

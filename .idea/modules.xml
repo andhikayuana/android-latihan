@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Project1.iml" filepath="$PROJECT_DIR$/Project1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-async-http-1.4.6/android-async-http-1.4.6.iml" filepath="$PROJECT_DIR$/android-async-http-1.4.6/android-async-http-1.4.6.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpcore-4.0.1/httpcore-4.0.1.iml" filepath="$PROJECT_DIR$/httpcore-4.0.1/httpcore-4.0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpcore-4.1.3-sources/httpcore-4.1.3-sources.iml" filepath="$PROJECT_DIR$/httpcore-4.1.3-sources/httpcore-4.1.3-sources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>
   </component>
 </project>

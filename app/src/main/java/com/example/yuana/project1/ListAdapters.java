@@ -54,15 +54,15 @@ public class ListAdapters extends BaseAdapter {
         tvLocation = (TextView) vi.findViewById(R.id.tv_location);
         tvDuedate = (TextView) vi.findViewById(R.id.tv_duedate);
 
-        tvTask.setText(data.get(i).get("task"));
-        tvLocation.setText(data.get(i).get("location"));
+        tvTask.setText(data.get(i).get("judul"));
+        tvLocation.setText(data.get(i).get("harga"));
         tvDuedate.setText(data.get(i).get("duedate"));
 
-        final String lokasi = data.get(i).get("location");
+        final String judul = data.get(i).get("judul");
         vi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog(" isi lokasi ",lokasi);
+                showDialog("  judulnya ",judul);
             }
         });
         return vi;
